@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         val mainLayout = findViewById<ConstraintLayout>(R.id.main)
         val premierBouton = findViewById<Button>(R.id.button_submit)
+        val nextButton = findViewById<Button>(R.id.button_next)
         val editText = findViewById<EditText>(R.id.editText)
         val textView = findViewById<TextView>(R.id.textView)
 
@@ -60,6 +62,12 @@ class MainActivity : AppCompatActivity() {
             } else {
                 textView.text = text
             }
+        }
+
+        // Controller on the next button
+        nextButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, MainActivity2::class.java)
+            startActivity(intent)
         }
     }
 }
