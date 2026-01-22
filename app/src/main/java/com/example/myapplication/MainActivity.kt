@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     // Variable to keep last added view ID
     private var lastViewId: Int = 0
 
+    const val EXTRA_TEXT = "text_to_display"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -67,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         // Controller on the next button
         nextButton.setOnClickListener {
             val intent = Intent(this@MainActivity, MainActivity2::class.java)
+            intent.putExtra(EXTRA_TEXT, VOSDONNEES)
             startActivity(intent)
         }
     }
