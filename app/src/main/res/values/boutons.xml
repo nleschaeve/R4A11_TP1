@@ -2,4 +2,5 @@
 <resources>
     <string name="button_submit">Valider</string>
     <string name="button_next">Suivant</string>
+    <string name="button_back">Précédent</string>
 </resources>

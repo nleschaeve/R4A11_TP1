@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,10 +20,16 @@ class MainActivity2 : AppCompatActivity() {
             insets
         }
 
-        // Récupérer le texte passé depuis MainActivity et l'afficher
+        // get the text given from MainActivity et display it
         val textView = findViewById<TextView>(R.id.textView2)
         val intent = intent
         val texteRecu = intent.getStringExtra(EXTRA_TEXT) ?: ""
         textView.text = texteRecu
+
+        // Button to go back to MainActivity
+        val buttonBack = findViewById<Button>(R.id.button_back)
+        buttonBack.setOnClickListener {
+            finish()
+        }
     }
 }
