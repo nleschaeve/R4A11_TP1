@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="greeting_message">Coucou j’ai trouvé comment faire</string>
+    <string name="error_message">Le texte saisi doit être validé et non nul.</string>
+    <string name="empty"></string>
     <string name="display_label">Titre nouvelle vue</string>
 </resources>

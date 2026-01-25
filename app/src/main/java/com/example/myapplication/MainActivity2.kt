@@ -23,8 +23,8 @@ class MainActivity2 : AppCompatActivity() {
         // get the text given from MainActivity et display it
         val textView = findViewById<TextView>(R.id.textView2)
         val intent = intent
-        val texteRecu = intent.getStringExtra(EXTRA_TEXT) ?: ""
-        textView.text = texteRecu
+        val givenText = intent.getStringExtra(EXTRA_TEXT) ?: ""
+        textView.text = givenText
 
         // Button to go back to MainActivity
         val buttonBack = findViewById<Button>(R.id.button_back)

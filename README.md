@@ -21,3 +21,9 @@ car le texte est récupéré depuis l'EditText au moment du clic sur le bouton S
 ## Question 5 :
 Le comportement de la question 4 me semble normal, car l'action de cliquer sur le bouton Suivant déclenche la récupération du texte saisi dans l'EditText, et le passe à la seconde activité via l'intent,
 alors que le clic sur le bouton Valider modifie uniquement le texte affiché dans la même activité sans interaction avec l'autre activité.
+
+## Question 6 :
+Pour ne pas afficher le nouveau texte sur la deuxième activité tant que le bouton Valider n'a pas été cliqué, 
+il faut modifier le comportement du bouton Suivant pour qu'il ne récupère le texte de l'EditText que si une certaine condition est remplie.
+Par exemple, on peut utiliser une variable booléenne qui est mise à true uniquement lorsque le bouton Valider est cliqué.
+Ensuite, lors du clique sur le bouton Valider, on met le texte saisi dans une variable, et c'est cette variable qui est passée à la deuxième activité.

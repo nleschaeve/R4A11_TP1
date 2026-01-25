@@ -17,6 +17,7 @@ const val EXTRA_TEXT = "text_to_display"
 class MainActivity : AppCompatActivity() {
     // Variable to keep last added view ID
     private var lastViewId: Int = 0
+    private var submitedText: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,21 +31,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         val mainLayout = findViewById<ConstraintLayout>(R.id.main)
-        val premierBouton = findViewById<Button>(R.id.button_submit)
+        val submitButton = findViewById<Button>(R.id.button_submit)
         val nextButton = findViewById<Button>(R.id.button_next)
         val editText = findViewById<EditText>(R.id.editText)
         val textView = findViewById<TextView>(R.id.textView)
+        val errorTextView = findViewById<TextView>(R.id.error_message)
 
         // Init lastViewId with button ID
-        lastViewId = premierBouton.id
+        lastViewId = submitButton.id
 
         // Controler on the bouton
-        premierBouton.setOnClickListener {
-            val text = editText.text.toString()
+        submitButton.setOnClickListener {
+            submitedText = editText.text.toString()
+            editText.setText("")
+            errorTextView.setText(R.string.empty)
 
-            if (text == "Afficher nouveau textView") {
+            if (submitedText == "Afficher nouveau textView") {
                 val secondTextView = TextView(this)
-                secondTextView.text = text
+                secondTextView.text = submitedText
                 secondTextView.id = View.generateViewId()
 
                 val params = ConstraintLayout.LayoutParams(
@@ -63,15 +67,26 @@ class MainActivity : AppCompatActivity() {
 
                 lastViewId = secondTextView.id
             } else {
-                textView.text = text
+                textView.text = submitedText
             }
         }
 
         // Controller on the next button
         nextButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, MainActivity2::class.java)
-            intent.putExtra(EXTRA_TEXT, editText.text.toString())
-            startActivity(intent)
+            if (submitedText.isNotEmpty()) {
+                val intent = Intent(this@MainActivity, MainActivity2::class.java)
+                intent.putExtra(EXTRA_TEXT, submitedText)
+
+                // Reset page values
+                textView.setText(R.string.greeting_message)
+                errorTextView.setText(R.string.empty)
+                editText.setText("")
+                submitedText = ""
+
+                startActivity(intent)
+            } else {
+                errorTextView.setText(R.string.error_message)
+            }
         }
     }
 }
